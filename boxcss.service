@@ -1,0 +1,39 @@
+#! /bin/bash
+#
+#  boxcss Bring up/down boxcss
+#
+# chkconfig: 345 99 99
+# description: start up boxcss
+#
+### BEGIN INIT INFO
+# Provides: $boxcss
+# Description: Bring up/down boxcss
+### END INIT INFO
+
+PATH="/sbin:/usr/sbin:/bin:/usr/bin:/usr/local/bin"
+export PATH
+
+case "$1" in
+  start)
+     dtool stop
+     dtool start
+        ;;
+
+  stop)
+     dtool stop
+        ;;
+
+  status)
+     dtool status
+     ;;
+
+  restart|reload|force-reload)
+     dtool restart
+     ;;
+
+  *)
+        echo $"Usage: $0 {start|stop|status|restart|reload|force-reload}"
+        exit 2
+esac
+
+exit 0
